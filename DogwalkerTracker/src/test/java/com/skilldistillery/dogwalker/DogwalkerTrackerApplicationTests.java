@@ -13,14 +13,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.jdbc.Sql;
 
-import com.projects.dogwalker.model.Walk;
-import com.skilldistillery.dogwalker.controllers.WalkController;
+import com.skilldistillery.dogwalker.controllers.DogwalkerController;
+import com.skilldistillery.dogwalker.entities.Walk;
 
 @SpringBootTest
 class WalkControllerTests {
 	
 	@Autowired
-	private WalkController controller;
+	private DogwalkerController controller;
 	
 	@Test
 	@Sql("/walks.sql")

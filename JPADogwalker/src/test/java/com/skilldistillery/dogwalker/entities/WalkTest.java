@@ -13,11 +13,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class DogTest {
+class WalkTest {
 	
 private static EntityManagerFactory emf;
 private EntityManager em;
-private Dog cowboy;
+private Walk cowboy;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
