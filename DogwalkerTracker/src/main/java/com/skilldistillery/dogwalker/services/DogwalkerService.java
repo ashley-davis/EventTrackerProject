@@ -2,7 +2,9 @@ package com.skilldistillery.dogwalker.services;
 
 import java.util.List;
 
-public interface WalkService {
+import com.skilldistillery.dogwalker.entities.Walk;
+
+public interface DogwalkerService {
 	
 	boolean walkExists(long id);
 	List<Walk> getAllWalks();

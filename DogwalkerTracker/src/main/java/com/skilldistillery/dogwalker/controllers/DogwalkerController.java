@@ -15,22 +15,23 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.projects.dogwalker.model.Walk;
-import com.projects.dogwalker.service.WalkService;
+import com.skilldistillery.dogwalker.entities.Walk;
 
-@CrossOrigin(origins = "http://localhost:8080")
+import com.skilldistillery.dogwalker.services.DogwalkerService;
+
+@CrossOrigin(origins = "http://localhost:8086")
 @RestController
-public class WalkController {
+public class DogwalkerController {
 
 	@Autowired
-    WalkService walkService;
+    DogwalkerService dogwalkerService;
 	
 	@GetMapping("/walks")
 	public ResponseEntity<List<Walk>> getAllWalks() {
 		
 	    try {
 	      
-	    	List<Walk> walks = walkService.getAllWalks();
+	    	List<Walk> walks = dogwalkerService.getAllWalks();
 	    	
 	    	if (walks == null || walks.isEmpty()) {
 	    		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -49,7 +50,7 @@ public class WalkController {
 		
 		try {
 	    	
-			Walk walk = walkService.getWalkById(id);
+			Walk walk = dogwalkerService.getWalkById(id);
 		    if (walk != null) {
 		    	
 		    	return new ResponseEntity<>(walk, HttpStatus.OK);
@@ -71,7 +72,7 @@ public class WalkController {
 		
 	    try {
 	    	
-	      Walk _walk = walkService.createWalk(walk);
+	      Walk _walk = dogwalkerService.createWalk(walk);
 	      
 	      return new ResponseEntity<>(_walk, HttpStatus.CREATED);
 	      
@@ -86,9 +87,9 @@ public class WalkController {
 		
 	    try {
 	    	
-	    	if (walkService.walkExists(id)) {
+	    	if (dogwalkerService.walkExists(id)) {
 	    		
-	    		walkService.deleteWalkById(id);
+	    		dogwalkerService.deleteWalkById(id);
 		    	return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		    
 		    } else {
@@ -107,7 +108,7 @@ public class WalkController {
 		  
 	    try {
 	    	
-	    	walkService.deleteAllWalks();
+	    	dogwalkerService.deleteAllWalks();
 	    	return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	    	
 	    } catch (Exception e) {
@@ -122,9 +123,9 @@ public class WalkController {
 	
 		 try {
 		
-			 if (walkService.walkExists(id)) {
+			 if (dogwalkerService.walkExists(id)) {
 			    	
-		    	return new ResponseEntity<>(walkService.updateWalk(id, walk), HttpStatus.OK);
+		    	return new ResponseEntity<>(dogwalkerService.updateWalk(id, walk), HttpStatus.OK);
 			      
 		     } else {
 		    	
@@ -142,9 +143,9 @@ public class WalkController {
 	
 		try {
 			
-			if (walkService.walkExists(id)) {
+			if (dogwalkerService.walkExists(id)) {
 		    	
-		    	return new ResponseEntity<>(walkService.partiallyUpdateWalk(id, walk), HttpStatus.OK);
+		    	return new ResponseEntity<>(dogwalkerService.partiallyUpdateWalk(id, walk), HttpStatus.OK);
 		      
 		    } else {
 		    	
