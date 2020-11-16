@@ -2,10 +2,8 @@ package com.skilldistillery.dogwalker.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.skilldistillery.dogwalker.entities.Dog;
+import com.projects.dogwalker.model.Walk;
 
-public interface DogwalkerRepository extends JpaRepository<Dog, Integer>
-
-{
-
+public interface WalkRepository extends JpaRepository<Walk, Long> {
+	
 }
